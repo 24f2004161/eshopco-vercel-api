@@ -62,4 +62,6 @@ def analytics(req: RequestBody):
             )
         }
 
-    return result
+    return {
+    "regions": result
+    }
