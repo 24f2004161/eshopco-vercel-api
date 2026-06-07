@@ -9,7 +9,6 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -33,7 +32,7 @@ def p95(values):
     return values[index]
 
 
-@app.post("/")
+@app.post("/anlaytics")
 def analytics(req: RequestBody):
 
     result = {}
