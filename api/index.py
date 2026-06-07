@@ -14,7 +14,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-with open("telemetry.json", "r") as f:
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+with open(BASE_DIR / "telemetry.json", "r") as f:
     telemetry = json.load(f)
 
 
