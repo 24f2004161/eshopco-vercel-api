@@ -37,8 +37,21 @@ class RequestBody(BaseModel):
 
 def p95(values):
     values = sorted(values)
-    index = math.ceil(0.95 * len(values)) - 1
-    return values[index]
+    n = len(values)
+
+    pos = 0.95 * (n - 1)
+
+    lower = int(pos)
+    upper = lower + 1
+
+    if upper >= n:
+        return values[lower]
+
+    fraction = pos - lower
+
+    return values[lower] + fraction * (
+        values[upper] - values[lower]
+    )
 
 
 @app.post("/anlaytics")
